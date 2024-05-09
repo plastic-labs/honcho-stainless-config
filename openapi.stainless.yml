@@ -1,0 +1,177 @@
+# yaml-language-server: $schema=https://app.stainlessapi.com/config.schema.json
+
+organization:
+  name: honcho
+  docs: https://docs.honcho.dev
+  contact: hello@plasticlabs.ai
+  github_org: plastic-labs
+resources:
+  apps:
+    methods:
+      get: get /apps/{app_id}
+      get_by_name: get /apps/name/{name}
+      update: put /apps/{app_id}
+      create: post /apps
+      get_or_create: get /apps/get_or_create/{name}
+    subresources:
+      users:
+        methods:
+          create: post /apps/{app_id}/users
+          list: get /apps/{app_id}/users
+          get: get /apps/{app_id}/users/{user_id}
+          get_by_name: get /apps/{app_id}/users/name/{name}
+          get_or_create: get /apps/{app_id}/users/get_or_create/{name}
+          update: put /apps/{app_id}/users/{user_id}
+        subresources:
+          sessions:
+            methods:
+              list: get /apps/{app_id}/users/{user_id}/sessions
+              create: post /apps/{app_id}/users/{user_id}/sessions
+              update: put /apps/{app_id}/users/{user_id}/sessions/{session_id}
+              delete: delete /apps/{app_id}/users/{user_id}/sessions/{session_id}
+              get: get /apps/{app_id}/users/{user_id}/sessions/{session_id}
+              chat: get /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
+              stream: get /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
+            subresources:
+              messages:
+                methods:
+                  create: >-
+                    post /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages
+                  list: >-
+                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages
+                  get: >-
+                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
+                  update: >-
+                    put /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
+                models:
+                  message: Message
+                  page_message: Page_Message_
+              metamessages:
+                methods:
+                  create: >-
+                    post /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
+                  list: >-
+                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
+                  get: >-
+                    get
+                    /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
+                  update: >-
+                    put
+                    /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
+                models:
+                  metamessage: Metamessage
+                  page_metamessage: Page_Metamessage_
+            models:
+              session: Session
+              page_session: Page_Session_
+              agent_chat: AgentChat
+          collections:
+            methods:
+              list: get /apps/{app_id}/users/{user_id}/collections
+              create: post /apps/{app_id}/users/{user_id}/collections
+              get_by_name: get /apps/{app_id}/users/{user_id}/collections/name/{name}
+              update: put /apps/{app_id}/users/{user_id}/collections/{collection_id}
+              delete: >-
+                delete /apps/{app_id}/users/{user_id}/collections/{collection_id}
+              get: get /apps/{app_id}/users/{user_id}/collections/{collection_id}
+              query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/query
+            subresources:
+              documents:
+                methods:
+                  list: >-
+                    get /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents
+                  create: >-
+                    post /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents
+                  get: >-
+                    get
+                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                  update: >-
+                    put
+                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                  delete: >-
+                    delete
+                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                models:
+                  document: Document
+                  page_document: Page_Document_
+            models:
+              collection: Collection
+              page_collection: Page_Collection_
+        models:
+          user: User
+          page_user: Page_User_
+    models:
+      app: App
+package:
+  node:
+    name: honcho-ai
+    repo: honcho-node
+  python:
+    name: honcho-ai
+    repo: honcho-python
+settings:
+  license: Apache-2.0
+client_settings:
+  opts:
+    api_key:
+      # or `token`, `auth_token`, etc.
+      type: string
+      read_env: HONCHO_AUTH_TOKEN
+      auth: { security_scheme: HTTPBearer }
+security:
+  - HTTPBearer: []
+  - {}
+environments:
+  local: http://localhost:8000
+  demo: https://demo.honcho.dev
+query_settings:
+  nested_format: brackets
+  array_format: comma
+readme:
+  example_requests:
+    default:
+      type: request
+      endpoint: post /apps
+      params: &ref_0 {}
+    headline:
+      type: request
+      endpoint: post /apps
+      params: *ref_0
+    pagination:
+      type: request
+      endpoint: get /apps/{app_id}/users
+      params:
+        app_id: REPLACE_ME
+pagination:
+  - name: page
+    type: page_number
+    request:
+      page:
+        type: integer
+        description: The page number
+        x-stainless-pagination-property:
+          purpose: page_number_param
+      size:
+        type: integer
+        description: The number of items in a page
+    response:
+      total:
+        type: integer
+      items:
+        type: array
+        items: {}
+        x-stainless-pagination-property:
+          purpose: items
+      page:
+        type: integer
+        x-stainless-pagination-property:
+          purpose: current_page_number_field
+      size:
+        type: integer
+      pages:
+        type: integer
+        x-stainless-pagination-property:
+          purpose: total_page_count_field
+openapi:
+  code_samples: mintlify
+
