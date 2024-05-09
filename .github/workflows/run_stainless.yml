@@ -15,4 +15,4 @@ jobs:
           stainless_api_key: ${{ secrets.STAINLESS_API_KEY }}
           input_path: 'openapi.json'
           config_path: 'openapi.stainless.yml'
-          project_name: 'honcho'
+          project_name: 'Honcho'
