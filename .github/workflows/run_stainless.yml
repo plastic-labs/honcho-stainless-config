@@ -15,4 +15,9 @@ jobs:
           stainless_api_key: ${{ secrets.STAINLESS_API_KEY }}
           input_path: 'openapi.json'
           config_path: 'openapi.stainless.yml'
+          output_path: 'honcho-openapi.documented.json'
           project_name: 'Honcho'
+      - uses: actions/upload-artifact@v4
+        with:
+          path: honcho-openapi.documented.json
+
