@@ -3117,7 +3117,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3146,7 +3147,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3178,7 +3180,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3208,7 +3211,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3238,7 +3242,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3263,7 +3268,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3291,7 +3297,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3326,7 +3333,7 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object""additionalProperties": true
               },
               {
                 "type": "null"
@@ -3358,7 +3365,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3405,7 +3413,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3440,7 +3449,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3462,7 +3472,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3496,7 +3507,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3536,7 +3548,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3575,7 +3588,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3846,7 +3860,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           },
           "created_at": {
             "type": "string",
@@ -3877,7 +3892,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3898,7 +3914,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3933,7 +3950,8 @@
           },
           "metadata": {
             "type": "object",
-            "title": "Metadata"
+            "title": "Metadata",
+            "additionalProperties": true
           }
         },
         "type": "object",
@@ -3958,7 +3976,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
@@ -3990,7 +4009,8 @@
           "metadata": {
             "anyOf": [
               {
-                "type": "object"
+                "type": "object",
+                "additionalProperties": true
               },
               {
                 "type": "null"
