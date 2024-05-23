@@ -112,11 +112,13 @@ package:
 settings:
   license: Apache-2.0
 client_settings:
+  opt_in_new_security_behaviour: true
   opts:
     api_key:
       # or `token`, `auth_token`, etc.
       type: string
-      read_env: HONCHO_AUTH_TOKEN
+      nullable: true
+      read_env: HONCHO_API_KEY
       auth: { security_scheme: HTTPBearer }
 security:
   - HTTPBearer: []
