@@ -4,7 +4,7 @@
     "title": "Honcho API",
     "summary": "An API for adding personalization to AI Apps",
     "description": "This API is used to store data and get insights about users for AI\n    applications",
-    "version": "0.1.0"
+    "version": "0.0.10"
   },
   "servers": [
     {
@@ -684,7 +684,7 @@
           "sessions"
         ],
         "summary": "Get Sessions",
-        "description": "Get All Sessions for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    location_id (str, optional): Optional Location ID representing the location of a\n    session\n\nReturns:\n    list[schemas.Session]: List of Session objects",
+        "description": "Get All Sessions for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Session]: List of Session objects",
         "operationId": "get_sessions_apps__app_id__users__user_id__sessions_get",
         "security": [
           {
@@ -711,22 +711,6 @@
               "type": "string",
               "format": "uuid",
               "title": "User Id"
-            }
-          },
-          {
-            "name": "location_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Location Id"
             }
           },
           {
@@ -835,7 +819,7 @@
           "sessions"
         ],
         "summary": "Create Session",
-        "description": "Create a Session for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session (schemas.SessionCreate): The Session object containing any\n    metadata and a location ID\n\nReturns:\n    schemas.Session: The Session object of the new Session",
+        "description": "Create a Session for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session (schemas.SessionCreate): The Session object containing any\n    metadata\n\nReturns:\n    schemas.Session: The Session object of the new Session",
         "operationId": "create_session_apps__app_id__users__user_id__sessions_post",
         "security": [
           {
@@ -1654,7 +1638,7 @@
           "messages"
         ],
         "summary": "Create Metamessage",
-        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    message (schemas.MessageCreate): The Message object to add containing the\n    message content and type\n\nReturns:\n    schemas.Message: The Message object of the added message\n\nRaises:\n    HTTPException: If the session is not found",
+        "description": "Adds a metamessage to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the metamessage to\n    metamessage (schemas.MetamessageCreate): The Metamessage object to add containing the\n    metamessage content and type\n\nReturns:\n    schemas.Metamessage: The Metamessage object of the added metamessage\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "create_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages_post",
         "security": [
           {
@@ -3070,7 +3054,7 @@
                   "items": {
                     "$ref": "#/components/schemas/Document"
                   },
-                  "title": "Response Query Documents Apps  App Id  Users  User Id  Collections  Collection Id  Query Get"
+                  "title": "Response Query Documents Apps  App Id  Users  User Id  Collections  Collection Id Documents Query Get"
                 }
               }
             }
@@ -3262,7 +3246,14 @@
       "CollectionUpdate": {
         "properties": {
           "name": {
-            "type": "string",
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "title": "Name"
           },
           "metadata": {
@@ -3279,21 +3270,18 @@
           }
         },
         "type": "object",
-        "required": [
-          "name"
-        ],
         "title": "CollectionUpdate"
       },
       "Document": {
         "properties": {
-          "content": {
-            "type": "string",
-            "title": "Content"
-          },
           "id": {
             "type": "string",
             "format": "uuid",
             "title": "Id"
+          },
+          "content": {
+            "type": "string",
+            "title": "Content"
           },
           "metadata": {
             "type": "object",
@@ -3313,8 +3301,8 @@
         },
         "type": "object",
         "required": [
-          "content",
           "id",
+          "content",
           "metadata",
           "created_at",
           "collection_id"
@@ -3855,10 +3843,6 @@
             "format": "uuid",
             "title": "User Id"
           },
-          "location_id": {
-            "type": "string",
-            "title": "Location Id"
-          },
           "metadata": {
             "type": "object",
             "title": "Metadata",
@@ -3875,7 +3859,6 @@
           "id",
           "is_active",
           "user_id",
-          "location_id",
           "metadata",
           "created_at"
         ],
@@ -3886,10 +3869,6 @@
       },
       "SessionCreate": {
         "properties": {
-          "location_id": {
-            "type": "string",
-            "title": "Location Id"
-          },
           "metadata": {
             "anyOf": [
               {

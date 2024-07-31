@@ -102,17 +102,23 @@ resources:
           page_user: Page_User_
     models:
       app: App
-package:
+targets:
   node:
-    name: honcho-ai
-    repo: honcho-node
+    readme_title: honcho-ai
+    production_repo: plastic-labs/honcho-node
+    package_name: honcho
+    publish:
+      npm: true
   python:
-    name: honcho-ai
-    repo: honcho-python
+    readme_title: honcho-ai
+    production_repo: plastic-labs/honcho-python
+    package_name: honcho
+    publish:
+      pypi:
+        package_name: honcho-ai
 settings:
   license: Apache-2.0
 client_settings:
-  opt_in_new_security_behaviour: true
   opts:
     api_key:
       # or `token`, `auth_token`, etc.
@@ -124,8 +130,8 @@ security:
   - HTTPBearer: []
   - {}
 environments:
-  local: http://localhost:8000
   demo: https://demo.honcho.dev
+  local: http://localhost:8000
 query_settings:
   nested_format: brackets
   array_format: comma
