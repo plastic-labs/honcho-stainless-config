@@ -3884,9 +3884,6 @@
           }
         },
         "type": "object",
-        "required": [
-          "location_id"
-        ],
         "title": "SessionCreate"
       },
       "SessionUpdate": {
