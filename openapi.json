@@ -4,7 +4,17 @@
     "title": "Honcho API",
     "summary": "An API for adding personalization to AI Apps",
     "description": "This API is used to store data and get insights about users for AI\n    applications",
-    "version": "0.0.10"
+    "contact": {
+      "name": "Plastic Labs",
+      "url": "https://plasticlabs.ai/",
+      "email": "hello@plasticlabs.ai"
+    },
+    "license": {
+      "name": "GNU Affero General Public License v3.0",
+      "identifier": "AGPL-3.0-only",
+      "url": "https://github.com/plastic-labs/honcho/blob/main/LICENSE"
+    },
+    "version": "0.0.12"
   },
   "servers": [
     {
@@ -19,9 +29,7 @@
   "paths": {
     "/apps/{app_id}": {
       "get": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["apps"],
         "summary": "Get App",
         "description": "Get an App by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app\n\nReturns:\n    schemas.App: App object",
         "operationId": "get_app_apps__app_id__get",
@@ -67,9 +75,7 @@
         }
       },
       "put": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["apps"],
         "summary": "Update App",
         "description": "Update an App\n\nArgs:\n    app_id (uuid.UUID): The ID of the app to update\n    app (schemas.AppUpdate): The App object containing any new metadata\n\nReturns:\n    schemas.App: The App object of the updated App",
         "operationId": "update_app_apps__app_id__put",
@@ -127,9 +133,7 @@
     },
     "/apps/name/{name}": {
       "get": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["apps"],
         "summary": "Get App By Name",
         "description": "Get an App by Name\n\nArgs:\n    app_name (str): The name of the app\n\nReturns:\n    schemas.App: App object",
         "operationId": "get_app_by_name_apps_name__name__get",
@@ -176,9 +180,7 @@
     },
     "/apps": {
       "post": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["apps"],
         "summary": "Create App",
         "description": "Create an App\n\nArgs:\n    app (schemas.AppCreate): The App object containing any metadata\n\nReturns:\n    schemas.App: Created App object",
         "operationId": "create_app_apps_post",
@@ -224,9 +226,7 @@
     },
     "/apps/get_or_create/{name}": {
       "get": {
-        "tags": [
-          "apps"
-        ],
+        "tags": ["apps"],
         "summary": "Get Or Create App",
         "description": "Get or Create an App\n\nArgs:\n    app_name (str): The name of the app\n\nReturns:\n    schemas.App: App object",
         "operationId": "get_or_create_app_apps_get_or_create__name__get",
@@ -273,9 +273,7 @@
     },
     "/apps/{app_id}/users": {
       "post": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Create User",
         "description": "Create a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Created User object",
         "operationId": "create_user_apps__app_id__users_post",
@@ -331,9 +329,7 @@
         }
       },
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Get Users",
         "description": "Get All Users for an App\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n\nReturns:\n    list[schemas.User]: List of User objects",
         "operationId": "get_users_apps__app_id__users_get",
@@ -434,9 +430,7 @@
     },
     "/apps/{app_id}/users/name/{name}": {
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Get User By Name",
         "description": "Get a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
         "operationId": "get_user_by_name_apps__app_id__users_name__name__get",
@@ -493,9 +487,7 @@
     },
     "/apps/{app_id}/users/{user_id}": {
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Get User",
         "description": "Get a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
         "operationId": "get_user_apps__app_id__users__user_id__get",
@@ -551,9 +543,7 @@
         }
       },
       "put": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Update User",
         "description": "Update a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Updated User object",
         "operationId": "update_user_apps__app_id__users__user_id__put",
@@ -621,9 +611,7 @@
     },
     "/apps/{app_id}/users/get_or_create/{name}": {
       "get": {
-        "tags": [
-          "users"
-        ],
+        "tags": ["users"],
         "summary": "Get Or Create User",
         "description": "Get or Create a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
         "operationId": "get_or_create_user_apps__app_id__users_get_or_create__name__get",
@@ -680,9 +668,7 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions": {
       "get": {
-        "tags": [
-          "sessions"
-        ],
+        "tags": ["sessions"],
         "summary": "Get Sessions",
         "description": "Get All Sessions for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Session]: List of Session objects",
         "operationId": "get_sessions_apps__app_id__users__user_id__sessions_get",
@@ -815,9 +801,7 @@
         }
       },
       "post": {
-        "tags": [
-          "sessions"
-        ],
+        "tags": ["sessions"],
         "summary": "Create Session",
         "description": "Create a Session for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session (schemas.SessionCreate): The Session object containing any\n    metadata\n\nReturns:\n    schemas.Session: The Session object of the new Session",
         "operationId": "create_session_apps__app_id__users__user_id__sessions_post",
@@ -885,9 +869,7 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}": {
       "put": {
-        "tags": [
-          "sessions"
-        ],
+        "tags": ["sessions"],
         "summary": "Update Session",
         "description": "Update the metadata of a Session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to update\n    session (schemas.SessionUpdate): The Session object containing any new metadata\n\nReturns:\n    schemas.Session: The Session object of the updated Session",
         "operationId": "update_session_apps__app_id__users__user_id__sessions__session_id__put",
@@ -963,9 +945,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "sessions"
-        ],
+        "tags": ["sessions"],
         "summary": "Delete Session",
         "description": "Delete a session by marking it as inactive\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to delete\n\nReturns:\n    dict: A message indicating that the session was deleted\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "delete_session_apps__app_id__users__user_id__sessions__session_id__delete",
@@ -1029,9 +1009,7 @@
         }
       },
       "get": {
-        "tags": [
-          "sessions"
-        ],
+        "tags": ["sessions"],
         "summary": "Get Session",
         "description": "Get a specific session for a user by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "get_session_apps__app_id__users__user_id__sessions__session_id__get",
@@ -1098,12 +1076,10 @@
       }
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat": {
-      "get": {
-        "tags": [
-          "sessions"
-        ],
-        "summary": "Get Chat",
-        "operationId": "get_chat_apps__app_id__users__user_id__sessions__session_id__chat_get",
+      "post": {
+        "tags": ["sessions"],
+        "summary": "Chat",
+        "operationId": "chat_apps__app_id__users__user_id__sessions__session_id__chat_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1140,17 +1116,18 @@
               "format": "uuid",
               "title": "Session Id"
             }
-          },
-          {
-            "name": "query",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Query"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentQuery"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -1176,12 +1153,10 @@
       }
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream": {
-      "get": {
-        "tags": [
-          "sessions"
-        ],
+      "post": {
+        "tags": ["sessions"],
         "summary": "Get Chat Stream",
-        "operationId": "get_chat_stream_apps__app_id__users__user_id__sessions__session_id__chat_stream_get",
+        "operationId": "get_chat_stream_apps__app_id__users__user_id__sessions__session_id__chat_stream_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1218,17 +1193,18 @@
               "format": "uuid",
               "title": "Session Id"
             }
-          },
-          {
-            "name": "query",
-            "in": "query",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "title": "Query"
-            }
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AgentQuery"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Chat stream",
@@ -1259,11 +1235,9 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages": {
       "post": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Create Message For Session",
-        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    message (schemas.MessageCreate): The Message object to add containing the\n    message content and type\n\nReturns:\n    schemas.Message: The Message object of the added message\n\nRaises:\n    HTTPException: If the session is not found",
+        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    message (schemas.MessageCreate): The Message object to add containing the message content and type\n\nReturns:\n    schemas.Message: The Message object of the added message\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "create_message_for_session_apps__app_id__users__user_id__sessions__session_id__messages_post",
         "security": [
           {
@@ -1337,9 +1311,7 @@
         }
       },
       "get": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Get Messages",
         "description": "Get all messages for a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the messages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "get_messages_apps__app_id__users__user_id__sessions__session_id__messages_get",
@@ -1467,9 +1439,7 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}": {
       "get": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Get Message",
         "operationId": "get_message_apps__app_id__users__user_id__sessions__session_id__messages__message_id__get",
         "security": [
@@ -1544,9 +1514,7 @@
         }
       },
       "put": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Update Message",
         "description": "Update's the metadata of a message",
         "operationId": "update_message_apps__app_id__users__user_id__sessions__session_id__messages__message_id__put",
@@ -1634,11 +1602,9 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages": {
       "post": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Create Metamessage",
-        "description": "Adds a metamessage to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the metamessage to\n    metamessage (schemas.MetamessageCreate): The Metamessage object to add containing the\n    metamessage content and type\n\nReturns:\n    schemas.Metamessage: The Metamessage object of the added metamessage\n\nRaises:\n    HTTPException: If the session is not found",
+        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    metamessage (schemas.MeteamessageCreate): The metamessage creation object\n\nReturns:\n    schemas.Metamessage: The Metamessage object of the added metamessage\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "create_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages_post",
         "security": [
           {
@@ -1712,9 +1678,7 @@
         }
       },
       "get": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Get Metamessages",
         "description": "Get all messages for a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the metamessages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "get_metamessages_apps__app_id__users__user_id__sessions__session_id__metamessages_get",
@@ -1875,9 +1839,7 @@
     },
     "/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}": {
       "get": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Get Metamessage",
         "description": "Get a specific Metamessage by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
         "operationId": "get_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__get",
@@ -1963,9 +1925,7 @@
         }
       },
       "put": {
-        "tags": [
-          "messages"
-        ],
+        "tags": ["messages"],
         "summary": "Update Metamessage",
         "description": "Update's the metadata of a metamessage",
         "operationId": "update_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__put",
@@ -2053,9 +2013,7 @@
     },
     "/apps/{app_id}/users/{user_id}/collections": {
       "get": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Get Collections",
         "description": "Get All Collections for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Collection]: List of Collection objects",
         "operationId": "get_collections_apps__app_id__users__user_id__collections_get",
@@ -2171,9 +2129,7 @@
         }
       },
       "post": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Create Collection",
         "operationId": "create_collection_apps__app_id__users__user_id__collections_post",
         "security": [
@@ -2240,9 +2196,7 @@
     },
     "/apps/{app_id}/users/{user_id}/collections/name/{name}": {
       "get": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Get Collection By Name",
         "operationId": "get_collection_by_name_apps__app_id__users__user_id__collections_name__name__get",
         "security": [
@@ -2308,9 +2262,7 @@
     },
     "/apps/{app_id}/users/{user_id}/collections/{collection_id}": {
       "get": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Get Collection By Id",
         "operationId": "get_collection_by_id_apps__app_id__users__user_id__collections__collection_id__get",
         "security": [
@@ -2375,9 +2327,7 @@
         }
       },
       "put": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Update Collection",
         "operationId": "update_collection_apps__app_id__users__user_id__collections__collection_id__put",
         "security": [
@@ -2452,9 +2402,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "collections"
-        ],
+        "tags": ["collections"],
         "summary": "Delete Collection",
         "operationId": "delete_collection_apps__app_id__users__user_id__collections__collection_id__delete",
         "security": [
@@ -2519,9 +2467,7 @@
     },
     "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents": {
       "get": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Get Documents",
         "operationId": "get_documents_apps__app_id__users__user_id__collections__collection_id__documents_get",
         "security": [
@@ -2646,9 +2592,7 @@
         }
       },
       "post": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Create Document",
         "operationId": "create_document_apps__app_id__users__user_id__collections__collection_id__documents_post",
         "security": [
@@ -2725,9 +2669,7 @@
     },
     "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}": {
       "get": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Get Document",
         "operationId": "get_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__get",
         "security": [
@@ -2802,9 +2744,7 @@
         }
       },
       "put": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Update Document",
         "operationId": "update_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__put",
         "security": [
@@ -2889,9 +2829,7 @@
         }
       },
       "delete": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Delete Document",
         "operationId": "delete_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__delete",
         "security": [
@@ -2964,13 +2902,11 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/{collection_id}/query": {
+    "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query": {
       "get": {
-        "tags": [
-          "documents"
-        ],
+        "tags": ["documents"],
         "summary": "Query Documents",
-        "operationId": "query_documents_apps__app_id__users__user_id__collections__collection_id__query_get",
+        "operationId": "query_documents_apps__app_id__users__user_id__collections__collection_id__documents_query_get",
         "security": [
           {
             "HTTPBearer": []
@@ -3054,7 +2990,7 @@
                   "items": {
                     "$ref": "#/components/schemas/Document"
                   },
-                  "title": "Response Query Documents Apps  App Id  Users  User Id  Collections  Collection Id Documents Query Get"
+                  "title": "Response Query Documents Apps  App Id  Users  User Id  Collections  Collection Id  Documents Query Get"
                 }
               }
             }
@@ -3083,10 +3019,44 @@
           }
         },
         "type": "object",
-        "required": [
-          "content"
-        ],
+        "required": ["content"],
         "title": "AgentChat"
+      },
+      "AgentQuery": {
+        "properties": {
+          "queries": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Queries"
+          },
+          "collections": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              }
+            ],
+            "title": "Collections",
+            "default": "honcho"
+          }
+        },
+        "type": "object",
+        "required": ["queries"],
+        "title": "AgentQuery"
       },
       "App": {
         "properties": {
@@ -3111,16 +3081,9 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "name",
-          "metadata",
-          "created_at"
-        ],
+        "required": ["id", "name", "metadata", "created_at"],
         "title": "App",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "AppCreate": {
         "properties": {
@@ -3143,9 +3106,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "title": "AppCreate"
       },
       "AppUpdate": {
@@ -3205,17 +3166,9 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "name",
-          "user_id",
-          "metadata",
-          "created_at"
-        ],
+        "required": ["id", "name", "user_id", "metadata", "created_at"],
         "title": "Collection",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "CollectionCreate": {
         "properties": {
@@ -3238,9 +3191,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "title": "CollectionCreate"
       },
       "CollectionUpdate": {
@@ -3308,9 +3259,7 @@
           "collection_id"
         ],
         "title": "Document",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "DocumentCreate": {
         "properties": {
@@ -3333,24 +3282,11 @@
           }
         },
         "type": "object",
-        "required": [
-          "content"
-        ],
+        "required": ["content"],
         "title": "DocumentCreate"
       },
       "DocumentUpdate": {
         "properties": {
-          "content": {
-            "anyOf": [
-              {
-                "type": "string"
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Content"
-          },
           "metadata": {
             "anyOf": [
               {
@@ -3362,6 +3298,17 @@
               }
             ],
             "title": "Metadata"
+          },
+          "content": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Content"
           }
         },
         "type": "object",
@@ -3421,9 +3368,7 @@
           "created_at"
         ],
         "title": "Message",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "MessageCreate": {
         "properties": {
@@ -3450,10 +3395,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "content",
-          "is_user"
-        ],
+        "required": ["content", "is_user"],
         "title": "MessageCreate"
       },
       "MessageUpdate": {
@@ -3515,9 +3457,7 @@
           "created_at"
         ],
         "title": "Metamessage",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "MetamessageCreate": {
         "properties": {
@@ -3549,11 +3489,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "metamessage_type",
-          "content",
-          "message_id"
-        ],
+        "required": ["metamessage_type", "content", "message_id"],
         "title": "MetamessageCreate"
       },
       "MetamessageUpdate": {
@@ -3588,9 +3524,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "message_id"
-        ],
+        "required": ["message_id"],
         "title": "MetamessageUpdate"
       },
       "Page_Collection_": {
@@ -3624,12 +3558,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[Collection]"
       },
       "Page_Document_": {
@@ -3663,12 +3592,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[Document]"
       },
       "Page_Message_": {
@@ -3702,12 +3626,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[Message]"
       },
       "Page_Metamessage_": {
@@ -3741,12 +3660,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[Metamessage]"
       },
       "Page_Session_": {
@@ -3780,12 +3694,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[Session]"
       },
       "Page_User_": {
@@ -3819,12 +3728,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "items",
-          "total",
-          "page",
-          "size"
-        ],
+        "required": ["items", "total", "page", "size"],
         "title": "Page[User]"
       },
       "Session": {
@@ -3855,17 +3759,9 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "is_active",
-          "user_id",
-          "metadata",
-          "created_at"
-        ],
+        "required": ["id", "is_active", "user_id", "metadata", "created_at"],
         "title": "Session",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "SessionCreate": {
         "properties": {
@@ -3932,17 +3828,9 @@
           }
         },
         "type": "object",
-        "required": [
-          "id",
-          "name",
-          "app_id",
-          "created_at",
-          "metadata"
-        ],
+        "required": ["id", "name", "app_id", "created_at", "metadata"],
         "title": "User",
-        "exclude": [
-          "h_metadata"
-        ]
+        "exclude": ["h_metadata"]
       },
       "UserCreate": {
         "properties": {
@@ -3965,9 +3853,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "name"
-        ],
+        "required": ["name"],
         "title": "UserCreate"
       },
       "UserUpdate": {
@@ -4025,11 +3911,7 @@
           }
         },
         "type": "object",
-        "required": [
-          "loc",
-          "msg",
-          "type"
-        ],
+        "required": ["loc", "msg", "type"],
         "title": "ValidationError"
       }
     },
@@ -4041,3 +3923,4 @@
     }
   }
 }
+
