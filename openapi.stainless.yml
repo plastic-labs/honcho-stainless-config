@@ -26,8 +26,6 @@ resources:
           metamessages:
             methods:
               list: get /apps/{app_id}/users/{user_id}/metamessages
-            models:
-              page_metamessage: Page_Metamessage_
           sessions:
             methods:
               list: get /apps/{app_id}/users/{user_id}/sessions
@@ -35,8 +33,8 @@ resources:
               update: put /apps/{app_id}/users/{user_id}/sessions/{session_id}
               delete: delete /apps/{app_id}/users/{user_id}/sessions/{session_id}
               get: get /apps/{app_id}/users/{user_id}/sessions/{session_id}
-              chat: get /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
-              stream: get /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
+              chat: post /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
+              stream: post /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
             subresources:
               messages:
                 methods:
@@ -79,7 +77,6 @@ resources:
               delete: >-
                 delete /apps/{app_id}/users/{user_id}/collections/{collection_id}
               get: get /apps/{app_id}/users/{user_id}/collections/{collection_id}
-              query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/query
             subresources:
               documents:
                 methods:
@@ -96,6 +93,7 @@ resources:
                   delete: >-
                     delete
                     /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                  query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/query
                 models:
                   document: Document
                   page_document: Page_Document_
@@ -118,9 +116,7 @@ targets:
     readme_title: honcho-ai
     production_repo: plastic-labs/honcho-python
     package_name: honcho
-    publish:
-      pypi:
-        package_name: honcho-ai
+    project_name: honcho-ai
 settings:
   license: Apache-2.0
 client_settings:
