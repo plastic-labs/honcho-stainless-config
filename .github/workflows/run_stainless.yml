@@ -3,10 +3,10 @@ name: Upload OpenAPI spec to Stainless
 on:
   push:
     branches: [main]
-  workflow_dispatch:
 
 jobs:
   stainless:
+    concurrency: upload-openapi-spec-action
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,8 +16,7 @@ jobs:
           input_path: 'openapi.json'
           config_path: 'openapi.stainless.yml'
           output_path: 'honcho-openapi.documented.json'
-          project_name: 'Honcho'
+          project_name: 'honcho'
       - uses: actions/upload-artifact@v4
         with:
           path: honcho-openapi.documented.json
-
