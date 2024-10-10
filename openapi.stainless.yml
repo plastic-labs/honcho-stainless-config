@@ -117,6 +117,8 @@ targets:
     production_repo: plastic-labs/honcho-python
     package_name: honcho
     project_name: honcho-ai
+    publish:
+      pypi: true
 settings:
   license: Apache-2.0
 client_settings:
