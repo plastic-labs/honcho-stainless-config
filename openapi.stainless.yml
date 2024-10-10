@@ -23,6 +23,11 @@ resources:
           get_or_create: get /apps/{app_id}/users/get_or_create/{name}
           update: put /apps/{app_id}/users/{user_id}
         subresources:
+          metamessages:
+            methods:
+              list: get /apps/{app_id}/users/{user_id}/metamessages
+            models:
+              page_metamessage: Page_Metamessage_
           sessions:
             methods:
               list: get /apps/{app_id}/users/{user_id}/sessions
