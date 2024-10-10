@@ -93,7 +93,7 @@ resources:
                   delete: >-
                     delete
                     /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
-                  query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/query
+                  query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query
                 models:
                   document: Document
                   page_document: Page_Document_
