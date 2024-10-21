@@ -18,6 +18,7 @@ jobs:
           config_path: 'openapi.stainless.yml'
           output_path: 'honcho-openapi.documented.json'
           project_name: 'honcho'
+          branch: ${{ github.ref_name }}
       - uses: actions/upload-artifact@v4
         with:
           path: honcho-openapi.documented.json
