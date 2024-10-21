@@ -2,7 +2,8 @@ name: Upload OpenAPI spec to Stainless
 
 on:
   push:
-    branches: [main]
+    branches:
+      - '**'
 
 jobs:
   stainless:

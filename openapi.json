@@ -27,12 +27,14 @@
     }
   ],
   "paths": {
-    "/apps/{app_id}": {
+    "/v1/apps/{app_id}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get App",
-        "description": "Get an App by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app\n\nReturns:\n    schemas.App: App object",
-        "operationId": "get_app_apps__app_id__get",
+        "description": "Get an App by ID\n\nArgs:\n    app_id (str): The ID of the app\n\nReturns:\n    schemas.App: App object",
+        "operationId": "get_app_v1_apps__app_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -46,7 +48,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           }
@@ -75,10 +76,12 @@
         }
       },
       "put": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Update App",
-        "description": "Update an App\n\nArgs:\n    app_id (uuid.UUID): The ID of the app to update\n    app (schemas.AppUpdate): The App object containing any new metadata\n\nReturns:\n    schemas.App: The App object of the updated App",
-        "operationId": "update_app_apps__app_id__put",
+        "description": "Update an App\n\nArgs:\n    app_id (str): The ID of the app to update\n    app (schemas.AppUpdate): The App object containing any new metadata\n\nReturns:\n    schemas.App: The App object of the updated App",
+        "operationId": "update_app_v1_apps__app_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -92,7 +95,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           }
@@ -131,12 +133,14 @@
         }
       }
     },
-    "/apps/name/{name}": {
+    "/v1/apps/name/{name}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get App By Name",
         "description": "Get an App by Name\n\nArgs:\n    app_name (str): The name of the app\n\nReturns:\n    schemas.App: App object",
-        "operationId": "get_app_by_name_apps_name__name__get",
+        "operationId": "get_app_by_name_v1_apps_name__name__get",
         "security": [
           {
             "HTTPBearer": []
@@ -178,12 +182,14 @@
         }
       }
     },
-    "/apps": {
+    "/v1/apps": {
       "post": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Create App",
         "description": "Create an App\n\nArgs:\n    app (schemas.AppCreate): The App object containing any metadata\n\nReturns:\n    schemas.App: Created App object",
-        "operationId": "create_app_apps_post",
+        "operationId": "create_app_v1_apps_post",
         "requestBody": {
           "content": {
             "application/json": {
@@ -224,12 +230,14 @@
         ]
       }
     },
-    "/apps/get_or_create/{name}": {
+    "/v1/apps/get_or_create/{name}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get Or Create App",
         "description": "Get or Create an App\n\nArgs:\n    app_name (str): The name of the app\n\nReturns:\n    schemas.App: App object",
-        "operationId": "get_or_create_app_apps_get_or_create__name__get",
+        "operationId": "get_or_create_app_v1_apps_get_or_create__name__get",
         "security": [
           {
             "HTTPBearer": []
@@ -271,12 +279,14 @@
         }
       }
     },
-    "/apps/{app_id}/users": {
+    "/v1/apps/{app_id}/users": {
       "post": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Create User",
-        "description": "Create a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Created User object",
-        "operationId": "create_user_apps__app_id__users_post",
+        "description": "Create a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Created User object",
+        "operationId": "create_user_v1_apps__app_id__users_post",
         "security": [
           {
             "HTTPBearer": []
@@ -290,7 +300,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           }
@@ -327,12 +336,16 @@
             }
           }
         }
-      },
-      "get": {
-        "tags": ["users"],
+      }
+    },
+    "/v1/apps/{app_id}/users/list": {
+      "post": {
+        "tags": [
+          "users"
+        ],
         "summary": "Get Users",
-        "description": "Get All Users for an App\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n\nReturns:\n    list[schemas.User]: List of User objects",
-        "operationId": "get_users_apps__app_id__users_get",
+        "description": "Get All Users for an App\n\nArgs:\n    app_id (str): The ID of the app representing the client\n    application using honcho\n\nReturns:\n    list[schemas.User]: List of User objects",
+        "operationId": "get_users_v1_apps__app_id__users_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -346,7 +359,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -358,22 +370,6 @@
               "type": "boolean",
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -404,6 +400,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UserGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -428,12 +434,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/name/{name}": {
+    "/v1/apps/{app_id}/users/name/{name}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get User By Name",
-        "description": "Get a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
-        "operationId": "get_user_by_name_apps__app_id__users_name__name__get",
+        "description": "Get a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
+        "operationId": "get_user_by_name_v1_apps__app_id__users_name__name__get",
         "security": [
           {
             "HTTPBearer": []
@@ -447,7 +455,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -485,12 +492,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}": {
+    "/v1/apps/{app_id}/users/{user_id}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get User",
-        "description": "Get a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
-        "operationId": "get_user_apps__app_id__users__user_id__get",
+        "description": "Get a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
+        "operationId": "get_user_v1_apps__app_id__users__user_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -504,7 +513,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -514,7 +522,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           }
@@ -543,10 +550,12 @@
         }
       },
       "put": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Update User",
-        "description": "Update a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Updated User object",
-        "operationId": "update_user_apps__app_id__users__user_id__put",
+        "description": "Update a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    user (schemas.UserCreate): The User object containing any metadata\n\nReturns:\n    schemas.User: Updated User object",
+        "operationId": "update_user_v1_apps__app_id__users__user_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -560,7 +569,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -570,7 +578,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           }
@@ -609,12 +616,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/get_or_create/{name}": {
+    "/v1/apps/{app_id}/users/get_or_create/{name}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get Or Create User",
-        "description": "Get or Create a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
-        "operationId": "get_or_create_user_apps__app_id__users_get_or_create__name__get",
+        "description": "Get or Create a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    schemas.User: User object",
+        "operationId": "get_or_create_user_v1_apps__app_id__users_get_or_create__name__get",
         "security": [
           {
             "HTTPBearer": []
@@ -628,7 +637,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -666,12 +674,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions": {
-      "get": {
-        "tags": ["sessions"],
+    "/v1/apps/{app_id}/users/{user_id}/sessions/list": {
+      "post": {
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Sessions",
-        "description": "Get All Sessions for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Session]: List of Session objects",
-        "operationId": "get_sessions_apps__app_id__users__user_id__sessions_get",
+        "description": "Get All Sessions for a User\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Session]: List of Session objects",
+        "operationId": "get_sessions_v1_apps__app_id__users__user_id__sessions_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -685,7 +695,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -695,25 +704,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
-            }
-          },
-          {
-            "name": "is_active",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "boolean"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "default": false,
-              "title": "Is Active"
             }
           },
           {
@@ -731,22 +722,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -777,6 +752,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SessionGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -799,12 +784,16 @@
             }
           }
         }
-      },
+      }
+    },
+    "/v1/apps/{app_id}/users/{user_id}/sessions": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Create Session",
-        "description": "Create a Session for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session (schemas.SessionCreate): The Session object containing any\n    metadata\n\nReturns:\n    schemas.Session: The Session object of the new Session",
-        "operationId": "create_session_apps__app_id__users__user_id__sessions_post",
+        "description": "Create a Session for a User\n\nArgs:\n    app_id (str): The ID of the app representing the client\n    application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session (schemas.SessionCreate): The Session object containing any\n    metadata\n\nReturns:\n    schemas.Session: The Session object of the new Session",
+        "operationId": "create_session_v1_apps__app_id__users__user_id__sessions_post",
         "security": [
           {
             "HTTPBearer": []
@@ -818,7 +807,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -828,7 +816,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           }
@@ -867,12 +854,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}": {
       "put": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Update Session",
-        "description": "Update the metadata of a Session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to update\n    session (schemas.SessionUpdate): The Session object containing any new metadata\n\nReturns:\n    schemas.Session: The Session object of the updated Session",
-        "operationId": "update_session_apps__app_id__users__user_id__sessions__session_id__put",
+        "description": "Update the metadata of a Session\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (str): The ID of the Session to update\n    session (schemas.SessionUpdate): The Session object containing any new metadata\n\nReturns:\n    schemas.Session: The Session object of the updated Session",
+        "operationId": "update_session_v1_apps__app_id__users__user_id__sessions__session_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -886,7 +875,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -896,7 +884,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -906,7 +893,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -945,10 +931,12 @@
         }
       },
       "delete": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Delete Session",
-        "description": "Delete a session by marking it as inactive\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to delete\n\nReturns:\n    dict: A message indicating that the session was deleted\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "delete_session_apps__app_id__users__user_id__sessions__session_id__delete",
+        "description": "Delete a session by marking it as inactive\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (str): The ID of the Session to delete\n\nReturns:\n    dict: A message indicating that the session was deleted\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "delete_session_v1_apps__app_id__users__user_id__sessions__session_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -962,7 +950,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -972,7 +959,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -982,7 +968,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1009,10 +994,12 @@
         }
       },
       "get": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Session",
-        "description": "Get a specific session for a user by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n    session_id (uuid.UUID): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "get_session_apps__app_id__users__user_id__sessions__session_id__get",
+        "description": "Get a specific session for a user by ID\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (str): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "get_session_v1_apps__app_id__users__user_id__sessions__session_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -1026,7 +1013,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1036,7 +1022,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1046,7 +1031,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1075,11 +1059,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Chat",
-        "operationId": "chat_apps__app_id__users__user_id__sessions__session_id__chat_post",
+        "operationId": "chat_v1_apps__app_id__users__user_id__sessions__session_id__chat_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1093,7 +1079,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1103,7 +1088,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1113,7 +1097,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1152,11 +1135,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Chat Stream",
-        "operationId": "get_chat_stream_apps__app_id__users__user_id__sessions__session_id__chat_stream_post",
+        "operationId": "get_chat_stream_v1_apps__app_id__users__user_id__sessions__session_id__chat_stream_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1170,7 +1155,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1180,7 +1164,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1190,7 +1173,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1233,12 +1215,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages": {
       "post": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Create Message For Session",
-        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    message (schemas.MessageCreate): The Message object to add containing the message content and type\n\nReturns:\n    schemas.Message: The Message object of the added message\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "create_message_for_session_apps__app_id__users__user_id__sessions__session_id__messages_post",
+        "description": "Adds a message to a session\n\nArgs:\n    app_id (str): The ID of the app representing the client application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    message (schemas.MessageCreate): The Message object to add containing the message content and type\n\nReturns:\n    schemas.Message: The Message object of the added message\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "create_message_for_session_v1_apps__app_id__users__user_id__sessions__session_id__messages_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1252,7 +1236,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1262,7 +1245,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1272,7 +1254,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1309,12 +1290,16 @@
             }
           }
         }
-      },
-      "get": {
-        "tags": ["messages"],
+      }
+    },
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/list": {
+      "post": {
+        "tags": [
+          "messages"
+        ],
         "summary": "Get Messages",
-        "description": "Get all messages for a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the messages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "get_messages_apps__app_id__users__user_id__sessions__session_id__messages_get",
+        "description": "Get all messages for a session\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the messages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "get_messages_v1_apps__app_id__users__user_id__sessions__session_id__messages_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1328,7 +1313,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1338,7 +1322,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1348,7 +1331,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           },
@@ -1367,22 +1349,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -1413,6 +1379,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -1437,11 +1413,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}": {
       "get": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Get Message",
-        "operationId": "get_message_apps__app_id__users__user_id__sessions__session_id__messages__message_id__get",
+        "operationId": "get_message_v1_apps__app_id__users__user_id__sessions__session_id__messages__message_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -1455,7 +1433,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1465,7 +1442,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1475,7 +1451,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           },
@@ -1485,7 +1460,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Message Id"
             }
           }
@@ -1514,10 +1488,12 @@
         }
       },
       "put": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Update Message",
         "description": "Update's the metadata of a message",
-        "operationId": "update_message_apps__app_id__users__user_id__sessions__session_id__messages__message_id__put",
+        "operationId": "update_message_v1_apps__app_id__users__user_id__sessions__session_id__messages__message_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -1531,7 +1507,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1541,7 +1516,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1551,7 +1525,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           },
@@ -1561,7 +1534,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Message Id"
             }
           }
@@ -1600,12 +1572,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages": {
       "post": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Create Metamessage",
-        "description": "Adds a message to a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    metamessage (schemas.MeteamessageCreate): The metamessage creation object\n\nReturns:\n    schemas.Metamessage: The Metamessage object of the added metamessage\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "create_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages_post",
+        "description": "Adds a message to a session\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to add the message to\n    metamessage (schemas.MeteamessageCreate): The metamessage creation object\n\nReturns:\n    schemas.Metamessage: The Metamessage object of the added metamessage\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "create_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1619,7 +1593,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1629,7 +1602,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1639,7 +1611,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           }
@@ -1676,12 +1647,16 @@
             }
           }
         }
-      },
-      "get": {
-        "tags": ["metamessages"],
+      }
+    },
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/list": {
+      "post": {
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessages",
-        "description": "Get all messages for a session\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the metamessages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "get_metamessages_apps__app_id__users__user_id__sessions__session_id__metamessages_get",
+        "description": "Get all messages for a session\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n    reverse (bool): Whether to reverse the order of the metamessages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "get_metamessages_v1_apps__app_id__users__user_id__sessions__session_id__metamessages_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -1695,7 +1670,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1705,7 +1679,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1715,41 +1688,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
-            }
-          },
-          {
-            "name": "message_id",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string",
-                  "format": "uuid"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Message Id"
-            }
-          },
-          {
-            "name": "metamessage_type",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Metamessage Type"
             }
           },
           {
@@ -1767,22 +1706,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -1813,6 +1736,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetamessageGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -1837,12 +1770,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}": {
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}": {
       "get": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessage",
-        "description": "Get a specific Metamessage by ID\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "get_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__get",
+        "description": "Get a specific Metamessage by ID\n\nArgs:\n    app_id (str): The ID of the app representing the client application using\n    honcho\n    user_id (str): The User ID representing the user, managed by the user\n    session_id (int): The ID of the Session to retrieve\n\nReturns:\n    schemas.Session: The Session object of the requested Session\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "get_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -1856,7 +1791,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1866,7 +1800,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1876,7 +1809,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           },
@@ -1886,7 +1818,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Metamessage Id"
             }
           },
@@ -1896,7 +1827,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Message Id"
             }
           }
@@ -1925,10 +1855,12 @@
         }
       },
       "put": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Update Metamessage",
         "description": "Update's the metadata of a metamessage",
-        "operationId": "update_metamessage_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__put",
+        "operationId": "update_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -1942,7 +1874,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -1952,7 +1883,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -1962,7 +1892,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Session Id"
             }
           },
@@ -1972,7 +1901,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Metamessage Id"
             }
           }
@@ -2011,12 +1939,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/metamessages": {
-      "get": {
-        "tags": ["metamessages"],
+    "/v1/apps/{app_id}/users/{user_id}/metamessages/list": {
+      "post": {
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessages By User",
-        "description": "Paginate through the user metamessages for a user\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    reverse (bool): Whether to reverse the order of the metamessages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
-        "operationId": "get_metamessages_by_user_apps__app_id__users__user_id__metamessages_get",
+        "description": "Paginate through the user metamessages for a user\n\nArgs:\n    app_id (str): The ID of the app representing the client application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n    reverse (bool): Whether to reverse the order of the metamessages\n\nReturns:\n    list[schemas.Message]: List of Message objects\n\nRaises:\n    HTTPException: If the session is not found",
+        "operationId": "get_metamessages_by_user_v1_apps__app_id__users__user_id__metamessages_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -2030,7 +1960,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2040,24 +1969,7 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
-            }
-          },
-          {
-            "name": "metamessage_type",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Metamessage Type"
             }
           },
           {
@@ -2075,22 +1987,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -2121,6 +2017,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MetamessageGetUserLevel"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2145,12 +2051,14 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections": {
-      "get": {
-        "tags": ["collections"],
+    "/v1/apps/{app_id}/users/{user_id}/collections/list": {
+      "post": {
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collections",
-        "description": "Get All Collections for a User\n\nArgs:\n    app_id (uuid.UUID): The ID of the app representing the client\n    application using honcho\n    user_id (uuid.UUID): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Collection]: List of Collection objects",
-        "operationId": "get_collections_apps__app_id__users__user_id__collections_get",
+        "description": "Get All Collections for a User\n\nArgs:\n    app_id (str): The ID of the app representing the client\n    application using honcho\n    user_id (str): The User ID representing the user, managed by the user\n\nReturns:\n    list[schemas.Collection]: List of Collection objects",
+        "operationId": "get_collections_v1_apps__app_id__users__user_id__collections_list_post",
         "security": [
           {
             "HTTPBearer": []
@@ -2164,7 +2072,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2174,7 +2081,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2193,22 +2099,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -2239,6 +2129,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2261,78 +2161,15 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": ["collections"],
-        "summary": "Create Collection",
-        "operationId": "create_collection_apps__app_id__users__user_id__collections_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {}
-        ],
-        "parameters": [
-          {
-            "name": "app_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "App Id"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "User Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/CollectionCreate"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Collection"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/name/{name}": {
+    "/v1/apps/{app_id}/users/{user_id}/collections/name/{name}": {
       "get": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collection By Name",
-        "operationId": "get_collection_by_name_apps__app_id__users__user_id__collections_name__name__get",
+        "operationId": "get_collection_by_name_v1_apps__app_id__users__user_id__collections_name__name__get",
         "security": [
           {
             "HTTPBearer": []
@@ -2346,7 +2183,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2356,7 +2192,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2394,11 +2229,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/{collection_id}": {
+    "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}": {
       "get": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collection By Id",
-        "operationId": "get_collection_by_id_apps__app_id__users__user_id__collections__collection_id__get",
+        "operationId": "get_collection_by_id_v1_apps__app_id__users__user_id__collections__collection_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -2412,7 +2249,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2422,7 +2258,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2432,7 +2267,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           }
@@ -2461,9 +2295,11 @@
         }
       },
       "put": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Update Collection",
-        "operationId": "update_collection_apps__app_id__users__user_id__collections__collection_id__put",
+        "operationId": "update_collection_v1_apps__app_id__users__user_id__collections__collection_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -2477,7 +2313,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2487,7 +2322,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2497,7 +2331,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           }
@@ -2536,9 +2369,11 @@
         }
       },
       "delete": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Delete Collection",
-        "operationId": "delete_collection_apps__app_id__users__user_id__collections__collection_id__delete",
+        "operationId": "delete_collection_v1_apps__app_id__users__user_id__collections__collection_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -2552,7 +2387,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2562,7 +2396,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2572,7 +2405,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           }
@@ -2599,11 +2431,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents": {
-      "get": {
-        "tags": ["documents"],
-        "summary": "Get Documents",
-        "operationId": "get_documents_apps__app_id__users__user_id__collections__collection_id__documents_get",
+    "/v1/apps/{app_id}/users/{user_id}/collections": {
+      "post": {
+        "tags": [
+          "collections"
+        ],
+        "summary": "Create Collection",
+        "operationId": "create_collection_v1_apps__app_id__users__user_id__collections_post",
         "security": [
           {
             "HTTPBearer": []
@@ -2617,7 +2451,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2627,7 +2460,73 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
+              "title": "User Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CollectionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Collection"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/list": {
+      "post": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Get Documents",
+        "operationId": "get_documents_v1_apps__app_id__users__user_id__collections__collection_id__documents_list_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {}
+        ],
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "App Id"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
               "title": "User Id"
             }
           },
@@ -2637,7 +2536,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           },
@@ -2656,22 +2554,6 @@
               ],
               "default": false,
               "title": "Reverse"
-            }
-          },
-          {
-            "name": "filter",
-            "in": "query",
-            "required": false,
-            "schema": {
-              "anyOf": [
-                {
-                  "type": "string"
-                },
-                {
-                  "type": "null"
-                }
-              ],
-              "title": "Filter"
             }
           },
           {
@@ -2702,6 +2584,16 @@
             "description": "Page size"
           }
         ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentGet"
+              }
+            }
+          }
+        },
         "responses": {
           "200": {
             "description": "Successful Response",
@@ -2724,88 +2616,15 @@
             }
           }
         }
-      },
-      "post": {
-        "tags": ["documents"],
-        "summary": "Create Document",
-        "operationId": "create_document_apps__app_id__users__user_id__collections__collection_id__documents_post",
-        "security": [
-          {
-            "HTTPBearer": []
-          },
-          {}
-        ],
-        "parameters": [
-          {
-            "name": "app_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "App Id"
-            }
-          },
-          {
-            "name": "user_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "User Id"
-            }
-          },
-          {
-            "name": "collection_id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "string",
-              "format": "uuid",
-              "title": "Collection Id"
-            }
-          }
-        ],
-        "requestBody": {
-          "required": true,
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/DocumentCreate"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "Successful Response",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Document"
-                }
-              }
-            }
-          },
-          "422": {
-            "description": "Validation Error",
-            "content": {
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/HTTPValidationError"
-                }
-              }
-            }
-          }
-        }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}": {
+    "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}": {
       "get": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Get Document",
-        "operationId": "get_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__get",
+        "operationId": "get_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__get",
         "security": [
           {
             "HTTPBearer": []
@@ -2819,7 +2638,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2829,7 +2647,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2839,7 +2656,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           },
@@ -2849,7 +2665,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Document Id"
             }
           }
@@ -2878,9 +2693,11 @@
         }
       },
       "put": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Update Document",
-        "operationId": "update_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__put",
+        "operationId": "update_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__put",
         "security": [
           {
             "HTTPBearer": []
@@ -2894,7 +2711,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2904,7 +2720,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2914,7 +2729,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           },
@@ -2924,7 +2738,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Document Id"
             }
           }
@@ -2963,9 +2776,11 @@
         }
       },
       "delete": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Delete Document",
-        "operationId": "delete_document_apps__app_id__users__user_id__collections__collection_id__documents__document_id__delete",
+        "operationId": "delete_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__delete",
         "security": [
           {
             "HTTPBearer": []
@@ -2979,7 +2794,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -2989,7 +2803,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -2999,7 +2812,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           },
@@ -3009,7 +2821,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Document Id"
             }
           }
@@ -3036,11 +2847,13 @@
         }
       }
     },
-    "/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query": {
+    "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query": {
       "get": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Query Documents",
-        "operationId": "query_documents_apps__app_id__users__user_id__collections__collection_id__documents_query_get",
+        "operationId": "query_documents_v1_apps__app_id__users__user_id__collections__collection_id__documents_query_get",
         "security": [
           {
             "HTTPBearer": []
@@ -3054,7 +2867,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "App Id"
             }
           },
@@ -3064,7 +2876,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "User Id"
             }
           },
@@ -3074,7 +2885,6 @@
             "required": true,
             "schema": {
               "type": "string",
-              "format": "uuid",
               "title": "Collection Id"
             }
           },
@@ -3124,7 +2934,83 @@
                   "items": {
                     "$ref": "#/components/schemas/Document"
                   },
-                  "title": "Response Query Documents Apps  App Id  Users  User Id  Collections  Collection Id  Documents Query Get"
+                  "title": "Response Query Documents V1 Apps  App Id  Users  User Id  Collections  Collection Id  Documents Query Get"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents": {
+      "post": {
+        "tags": [
+          "documents"
+        ],
+        "summary": "Create Document",
+        "operationId": "create_document_v1_apps__app_id__users__user_id__collections__collection_id__documents_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {}
+        ],
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "App Id"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Id"
+            }
+          },
+          {
+            "name": "collection_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Collection Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DocumentCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Document"
                 }
               }
             }
@@ -3153,7 +3039,9 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "AgentChat"
       },
       "AgentQuery": {
@@ -3174,14 +3062,15 @@
           }
         },
         "type": "object",
-        "required": ["queries"],
+        "required": [
+          "queries"
+        ],
         "title": "AgentQuery"
       },
       "App": {
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
             "title": "Id"
           },
           "name": {
@@ -3200,9 +3089,17 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "metadata", "created_at"],
+        "required": [
+          "id",
+          "name",
+          "metadata",
+          "created_at"
+        ],
         "title": "App",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "AppCreate": {
         "properties": {
@@ -3211,21 +3108,16 @@
             "title": "Name"
           },
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "object",
             "title": "Metadata",
-            "default": {}
+            "default": {},
+            "additionalProperties": true
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "AppCreate"
       },
       "AppUpdate": {
@@ -3261,7 +3153,6 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
             "title": "Id"
           },
           "name": {
@@ -3270,7 +3161,6 @@
           },
           "user_id": {
             "type": "string",
-            "format": "uuid",
             "title": "User Id"
           },
           "metadata": {
@@ -3285,9 +3175,18 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "user_id", "metadata", "created_at"],
+        "required": [
+          "id",
+          "name",
+          "user_id",
+          "metadata",
+          "created_at"
+        ],
         "title": "Collection",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "CollectionCreate": {
         "properties": {
@@ -3310,8 +3209,28 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "CollectionCreate"
+      },
+      "CollectionGet": {
+        "properties": {
+          "filter": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter"
+          }
+        },
+        "type": "object",
+        "title": "CollectionGet"
       },
       "CollectionUpdate": {
         "properties": {
@@ -3346,7 +3265,6 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
             "title": "Id"
           },
           "content": {
@@ -3365,7 +3283,6 @@
           },
           "collection_id": {
             "type": "string",
-            "format": "uuid",
             "title": "Collection Id"
           }
         },
@@ -3378,7 +3295,10 @@
           "collection_id"
         ],
         "title": "Document",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "DocumentCreate": {
         "properties": {
@@ -3401,8 +3321,28 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "DocumentCreate"
+      },
+      "DocumentGet": {
+        "properties": {
+          "filter": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter"
+          }
+        },
+        "type": "object",
+        "title": "DocumentGet"
       },
       "DocumentUpdate": {
         "properties": {
@@ -3448,6 +3388,10 @@
       },
       "Message": {
         "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
           "content": {
             "type": "string",
             "title": "Content"
@@ -3458,13 +3402,7 @@
           },
           "session_id": {
             "type": "string",
-            "format": "uuid",
             "title": "Session Id"
-          },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Id"
           },
           "metadata": {
             "type": "object",
@@ -3479,15 +3417,18 @@
         },
         "type": "object",
         "required": [
+          "id",
           "content",
           "is_user",
           "session_id",
-          "id",
           "metadata",
           "created_at"
         ],
         "title": "Message",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "MessageCreate": {
         "properties": {
@@ -3500,6 +3441,22 @@
             "title": "Is User"
           },
           "metadata": {
+            "type": "object",
+            "title": "Metadata",
+            "default": {},
+            "additionalProperties": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "content",
+          "is_user"
+        ],
+        "title": "MessageCreate"
+      },
+      "MessageGet": {
+        "properties": {
+          "filter": {
             "anyOf": [
               {
                 "type": "object",
@@ -3509,13 +3466,11 @@
                 "type": "null"
               }
             ],
-            "title": "Metadata",
-            "default": {}
+            "title": "Filter"
           }
         },
         "type": "object",
-        "required": ["content", "is_user"],
-        "title": "MessageCreate"
+        "title": "MessageGet"
       },
       "MessageUpdate": {
         "properties": {
@@ -3537,6 +3492,10 @@
       },
       "Metamessage": {
         "properties": {
+          "id": {
+            "type": "string",
+            "title": "Id"
+          },
           "metamessage_type": {
             "type": "string",
             "title": "Metamessage Type"
@@ -3545,14 +3504,8 @@
             "type": "string",
             "title": "Content"
           },
-          "id": {
-            "type": "string",
-            "format": "uuid",
-            "title": "Id"
-          },
           "message_id": {
             "type": "string",
-            "format": "uuid",
             "title": "Message Id"
           },
           "metadata": {
@@ -3568,15 +3521,18 @@
         },
         "type": "object",
         "required": [
+          "id",
           "metamessage_type",
           "content",
-          "id",
           "message_id",
           "metadata",
           "created_at"
         ],
         "title": "Metamessage",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "MetamessageCreate": {
         "properties": {
@@ -3590,7 +3546,6 @@
           },
           "message_id": {
             "type": "string",
-            "format": "uuid",
             "title": "Message Id"
           },
           "metadata": {
@@ -3608,14 +3563,86 @@
           }
         },
         "type": "object",
-        "required": ["metamessage_type", "content", "message_id"],
+        "required": [
+          "metamessage_type",
+          "content",
+          "message_id"
+        ],
         "title": "MetamessageCreate"
+      },
+      "MetamessageGet": {
+        "properties": {
+          "metamessage_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metamessage Type"
+          },
+          "message_id": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Message Id"
+          },
+          "filter": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter"
+          }
+        },
+        "type": "object",
+        "title": "MetamessageGet"
+      },
+      "MetamessageGetUserLevel": {
+        "properties": {
+          "filter": {
+            "anyOf": [
+              {
+                "type": "object",
+                "additionalProperties": true
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filter"
+          },
+          "metamessage_type": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Metamessage Type"
+          }
+        },
+        "type": "object",
+        "title": "MetamessageGetUserLevel"
       },
       "MetamessageUpdate": {
         "properties": {
           "message_id": {
             "type": "string",
-            "format": "uuid",
             "title": "Message Id"
           },
           "metamessage_type": {
@@ -3643,7 +3670,9 @@
           }
         },
         "type": "object",
-        "required": ["message_id"],
+        "required": [
+          "message_id"
+        ],
         "title": "MetamessageUpdate"
       },
       "Page_Collection_": {
@@ -3677,7 +3706,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Collection]"
       },
       "Page_Document_": {
@@ -3711,7 +3745,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Document]"
       },
       "Page_Message_": {
@@ -3745,7 +3784,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Message]"
       },
       "Page_Metamessage_": {
@@ -3779,7 +3823,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Metamessage]"
       },
       "Page_Session_": {
@@ -3813,7 +3862,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Session]"
       },
       "Page_User_": {
@@ -3847,14 +3901,18 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[User]"
       },
       "Session": {
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
             "title": "Id"
           },
           "is_active": {
@@ -3863,7 +3921,6 @@
           },
           "user_id": {
             "type": "string",
-            "format": "uuid",
             "title": "User Id"
           },
           "metadata": {
@@ -3878,13 +3935,34 @@
           }
         },
         "type": "object",
-        "required": ["id", "is_active", "user_id", "metadata", "created_at"],
+        "required": [
+          "id",
+          "is_active",
+          "user_id",
+          "metadata",
+          "created_at"
+        ],
         "title": "Session",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "SessionCreate": {
         "properties": {
           "metadata": {
+            "type": "object",
+            "title": "Metadata",
+            "default": {},
+            "additionalProperties": true
+          }
+        },
+        "type": "object",
+        "title": "SessionCreate"
+      },
+      "SessionGet": {
+        "properties": {
+          "filter": {
             "anyOf": [
               {
                 "type": "object",
@@ -3894,12 +3972,16 @@
                 "type": "null"
               }
             ],
-            "title": "Metadata",
-            "default": {}
+            "title": "Filter"
+          },
+          "is_active": {
+            "type": "boolean",
+            "title": "Is Active",
+            "default": false
           }
         },
         "type": "object",
-        "title": "SessionCreate"
+        "title": "SessionGet"
       },
       "SessionUpdate": {
         "properties": {
@@ -3923,7 +4005,6 @@
         "properties": {
           "id": {
             "type": "string",
-            "format": "uuid",
             "title": "Id"
           },
           "name": {
@@ -3932,7 +4013,6 @@
           },
           "app_id": {
             "type": "string",
-            "format": "uuid",
             "title": "App Id"
           },
           "created_at": {
@@ -3947,9 +4027,18 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "app_id", "created_at", "metadata"],
+        "required": [
+          "id",
+          "name",
+          "app_id",
+          "created_at",
+          "metadata"
+        ],
         "title": "User",
-        "exclude": ["h_metadata"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "UserCreate": {
         "properties": {
@@ -3958,6 +4047,21 @@
             "title": "Name"
           },
           "metadata": {
+            "type": "object",
+            "title": "Metadata",
+            "default": {},
+            "additionalProperties": true
+          }
+        },
+        "type": "object",
+        "required": [
+          "name"
+        ],
+        "title": "UserCreate"
+      },
+      "UserGet": {
+        "properties": {
+          "filter": {
             "anyOf": [
               {
                 "type": "object",
@@ -3967,13 +4071,11 @@
                 "type": "null"
               }
             ],
-            "title": "Metadata",
-            "default": {}
+            "title": "Filter"
           }
         },
         "type": "object",
-        "required": ["name"],
-        "title": "UserCreate"
+        "title": "UserGet"
       },
       "UserUpdate": {
         "properties": {
@@ -4030,7 +4132,11 @@
           }
         },
         "type": "object",
-        "required": ["loc", "msg", "type"],
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
         "title": "ValidationError"
       }
     },

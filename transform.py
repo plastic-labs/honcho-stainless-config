@@ -63,7 +63,24 @@ def transform_metadata(data):
             for item in obj:
                 update_metadata(item)
 
+    def update_filter(obj):
+        if isinstance(obj, dict):
+            if "filter" in obj and isinstance(obj["filter"], dict):
+                filter = obj["filter"]
+                if "anyOf" in filter:
+                    for option in filter["anyOf"]:
+                        if option.get("type") == "object":
+                            option["additionalProperties"] = True
+                elif filter.get("type") == "object":
+                    filter["additionalProperties"] = True
+            for value in obj.values():
+                update_filter(value)
+        elif isinstance(obj, list):
+            for item in obj:
+                update_filter(item)
+
     update_metadata(data)
+    update_filter(data)
     return data
 
 
