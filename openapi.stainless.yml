@@ -8,59 +8,59 @@ organization:
 resources:
   apps:
     methods:
-      get: get /apps/{app_id}
-      get_by_name: get /apps/name/{name}
-      update: put /apps/{app_id}
-      create: post /apps
-      get_or_create: get /apps/get_or_create/{name}
+      get: get /v1/apps/{app_id}
+      get_by_name: get /v1/apps/name/{name}
+      update: put /v1/apps/{app_id}
+      create: post /v1/apps
+      get_or_create: get /v1/apps/get_or_create/{name}
     subresources:
       users:
         methods:
-          create: post /apps/{app_id}/users
-          list: get /apps/{app_id}/users
-          get: get /apps/{app_id}/users/{user_id}
-          get_by_name: get /apps/{app_id}/users/name/{name}
-          get_or_create: get /apps/{app_id}/users/get_or_create/{name}
-          update: put /apps/{app_id}/users/{user_id}
+          create: post /v1/apps/{app_id}/users
+          list: post /v1/apps/{app_id}/users/list
+          get: get /v1/apps/{app_id}/users/{user_id}
+          get_by_name: get /v1/apps/{app_id}/users/name/{name}
+          get_or_create: get /v1/apps/{app_id}/users/get_or_create/{name}
+          update: put /v1/apps/{app_id}/users/{user_id}
         subresources:
           metamessages:
             methods:
-              list: get /apps/{app_id}/users/{user_id}/metamessages
+              list: post /v1/apps/{app_id}/users/{user_id}/metamessages/list
           sessions:
             methods:
-              list: get /apps/{app_id}/users/{user_id}/sessions
-              create: post /apps/{app_id}/users/{user_id}/sessions
-              update: put /apps/{app_id}/users/{user_id}/sessions/{session_id}
-              delete: delete /apps/{app_id}/users/{user_id}/sessions/{session_id}
-              get: get /apps/{app_id}/users/{user_id}/sessions/{session_id}
-              chat: post /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
-              stream: post /apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
+              list: post /v1/apps/{app_id}/users/{user_id}/sessions/list
+              create: post /v1/apps/{app_id}/users/{user_id}/sessions
+              update: put /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
+              delete: delete /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
+              get: get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
+              chat: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
+              stream: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
             subresources:
               messages:
                 methods:
                   create: >-
-                    post /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages
+                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages
                   list: >-
-                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages
+                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/list
                   get: >-
-                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
+                    get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
                   update: >-
-                    put /apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
+                    put /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
                 models:
                   message: Message
                   page_message: Page_Message_
               metamessages:
                 methods:
                   create: >-
-                    post /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
+                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
                   list: >-
-                    get /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
+                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/list
                   get: >-
                     get
-                    /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
+                    /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
                   update: >-
                     put
-                    /apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
+                    /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
                 models:
                   metamessage: Metamessage
                   page_metamessage: Page_Metamessage_
@@ -70,30 +70,30 @@ resources:
               agent_chat: AgentChat
           collections:
             methods:
-              list: get /apps/{app_id}/users/{user_id}/collections
-              create: post /apps/{app_id}/users/{user_id}/collections
-              get_by_name: get /apps/{app_id}/users/{user_id}/collections/name/{name}
-              update: put /apps/{app_id}/users/{user_id}/collections/{collection_id}
+              list: post /v1/apps/{app_id}/users/{user_id}/collections/list
+              create: post /v1/apps/{app_id}/users/{user_id}/collections
+              get_by_name: get /v1/apps/{app_id}/users/{user_id}/collections/name/{name}
+              update: put /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
               delete: >-
-                delete /apps/{app_id}/users/{user_id}/collections/{collection_id}
-              get: get /apps/{app_id}/users/{user_id}/collections/{collection_id}
+                delete /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
+              get: get /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
             subresources:
               documents:
                 methods:
                   list: >-
-                    get /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents
+                    post /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/list
                   create: >-
-                    post /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents
+                    post /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents
                   get: >-
                     get
-                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                    /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
                   update: >-
                     put
-                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                    /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
                   delete: >-
                     delete
-                    /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
-                  query: get /apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query
+                    /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
+                  query: get /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query
                 models:
                   document: Document
                   page_document: Page_Document_
@@ -185,4 +185,5 @@ pagination:
           purpose: total_page_count_field
 openapi:
   code_samples: mintlify
+
 
