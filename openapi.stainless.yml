@@ -35,6 +35,7 @@ resources:
               get: get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
               chat: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
               stream: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
+              clone: get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/clone
             subresources:
               messages:
                 methods:
@@ -109,7 +110,7 @@ targets:
   node:
     readme_title: honcho-ai
     production_repo: plastic-labs/honcho-node
-    package_name: honcho
+    package_name: honcho-ai
     publish:
       npm: true
   python:
@@ -142,15 +143,15 @@ readme:
   example_requests:
     default:
       type: request
-      endpoint: post /apps
+      endpoint: post /v1/apps
       params: &ref_0 {}
     headline:
       type: request
-      endpoint: post /apps
+      endpoint: post /v1/apps
       params: *ref_0
     pagination:
       type: request
-      endpoint: get /apps/{app_id}/users
+      endpoint: post /v1/apps/{app_id}/users/list
       params:
         app_id: REPLACE_ME
 pagination:
@@ -185,5 +186,4 @@ pagination:
           purpose: total_page_count_field
 openapi:
   code_samples: mintlify
-
 
