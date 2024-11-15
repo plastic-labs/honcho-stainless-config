@@ -99,8 +99,18 @@ def transform_openapi(input_file, output_file):
         json.dump(data, f, indent=2)
 
 
+def normalize_json(input_file, output_file):
+    with open(input_file, "r") as f:
+        data = json.load(f)
+
+    with open(output_file, "w") as f:
+        json.dump(data, f, indent=2)
+
+
 # Usage
+normalize_json("openapi.json", "openapi.json")
 input_file = "openapi-new.json"
 output_file = "output.json"
 transform_openapi(input_file, output_file)
+normalize_json(output_file, output_file)
 print(f"Transformation complete. Output written to {output_file}")

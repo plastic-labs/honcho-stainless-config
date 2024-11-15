@@ -94,7 +94,7 @@ resources:
                   delete: >-
                     delete
                     /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}
-                  query: get /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query
+                  query: post /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query
                 models:
                   document: Document
                   page_document: Page_Document_
