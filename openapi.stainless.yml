@@ -47,6 +47,8 @@ resources:
                     get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
                   update: >-
                     put /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}
+                  batch: >-
+                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/batch
                 models:
                   message: Message
                   page_message: Page_Message_

@@ -14,7 +14,7 @@
       "identifier": "AGPL-3.0-only",
       "url": "https://github.com/plastic-labs/honcho/blob/main/LICENSE"
     },
-    "version": "0.0.14"
+    "version": "0.0.15"
   },
   "servers": [
     {
@@ -29,7 +29,9 @@
   "paths": {
     "/v1/apps/{app_id}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get App",
         "description": "Get an App by ID",
         "operationId": "get_app_v1_apps__app_id__get",
@@ -74,7 +76,9 @@
         }
       },
       "put": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Update App",
         "description": "Update an App",
         "operationId": "update_app_v1_apps__app_id__put",
@@ -131,7 +135,9 @@
     },
     "/v1/apps/name/{name}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get App By Name",
         "description": "Get an App by Name",
         "operationId": "get_app_by_name_v1_apps_name__name__get",
@@ -178,7 +184,9 @@
     },
     "/v1/apps": {
       "post": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Create App",
         "description": "Create a new App",
         "operationId": "create_app_v1_apps_post",
@@ -224,7 +232,9 @@
     },
     "/v1/apps/get_or_create/{name}": {
       "get": {
-        "tags": ["apps"],
+        "tags": [
+          "apps"
+        ],
         "summary": "Get Or Create App",
         "description": "Get or Create an App",
         "operationId": "get_or_create_app_v1_apps_get_or_create__name__get",
@@ -271,7 +281,9 @@
     },
     "/v1/apps/{app_id}/users": {
       "post": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Create User",
         "description": "Create a new User",
         "operationId": "create_user_v1_apps__app_id__users_post",
@@ -328,7 +340,9 @@
     },
     "/v1/apps/{app_id}/users/list": {
       "post": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get Users",
         "description": "Get All Users for an App",
         "operationId": "get_users_v1_apps__app_id__users_list_post",
@@ -422,7 +436,9 @@
     },
     "/v1/apps/{app_id}/users/name/{name}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get User By Name",
         "description": "Get a User by name",
         "operationId": "get_user_by_name_v1_apps__app_id__users_name__name__get",
@@ -478,7 +494,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get User",
         "description": "Get a User by ID",
         "operationId": "get_user_v1_apps__app_id__users__user_id__get",
@@ -532,7 +550,9 @@
         }
       },
       "put": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Update User",
         "description": "Update a User's name and/or metadata",
         "operationId": "update_user_v1_apps__app_id__users__user_id__put",
@@ -598,7 +618,9 @@
     },
     "/v1/apps/{app_id}/users/get_or_create/{name}": {
       "get": {
-        "tags": ["users"],
+        "tags": [
+          "users"
+        ],
         "summary": "Get Or Create User",
         "description": "Get a User or create a new one by the input name",
         "operationId": "get_or_create_user_v1_apps__app_id__users_get_or_create__name__get",
@@ -654,7 +676,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/list": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Sessions",
         "description": "Get All Sessions for a User",
         "operationId": "get_sessions_v1_apps__app_id__users__user_id__sessions_list_post",
@@ -764,7 +788,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Create Session",
         "description": "Create a Session for a User",
         "operationId": "create_session_v1_apps__app_id__users__user_id__sessions_post",
@@ -830,7 +856,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}": {
       "put": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Update Session",
         "description": "Update the metadata of a Session",
         "operationId": "update_session_v1_apps__app_id__users__user_id__sessions__session_id__put",
@@ -903,7 +931,9 @@
         }
       },
       "delete": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Delete Session",
         "description": "Delete a session by marking it as inactive",
         "operationId": "delete_session_v1_apps__app_id__users__user_id__sessions__session_id__delete",
@@ -964,7 +994,9 @@
         }
       },
       "get": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Session",
         "description": "Get a specific session for a user by ID",
         "operationId": "get_session_v1_apps__app_id__users__user_id__sessions__session_id__get",
@@ -1029,7 +1061,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Chat",
         "description": "Chat with the Dialectic API",
         "operationId": "chat_v1_apps__app_id__users__user_id__sessions__session_id__chat_post",
@@ -1104,7 +1138,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream": {
       "post": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Get Chat Stream",
         "description": "Stream Results from the Dialectic API",
         "operationId": "get_chat_stream_v1_apps__app_id__users__user_id__sessions__session_id__chat_stream_post",
@@ -1183,7 +1219,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/clone": {
       "get": {
-        "tags": ["sessions"],
+        "tags": [
+          "sessions"
+        ],
         "summary": "Clone Session",
         "description": "Clone a session for a user, optionally will deep clone metamessages as well",
         "operationId": "clone_session_v1_apps__app_id__users__user_id__sessions__session_id__clone_get",
@@ -1274,7 +1312,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages": {
       "post": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Create Message For Session",
         "description": "Adds a message to a session",
         "operationId": "create_message_for_session_v1_apps__app_id__users__user_id__sessions__session_id__messages_post",
@@ -1347,9 +1387,92 @@
         }
       }
     },
+    "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/batch": {
+      "post": {
+        "tags": [
+          "messages"
+        ],
+        "summary": "Create Batch Messages For Session",
+        "description": "Bulk create messages for a session while maintaining order. Maximum 100 messages per batch.",
+        "operationId": "create_batch_messages_for_session_v1_apps__app_id__users__user_id__sessions__session_id__messages_batch_post",
+        "security": [
+          {
+            "HTTPBearer": []
+          },
+          {}
+        ],
+        "parameters": [
+          {
+            "name": "app_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "App Id"
+            }
+          },
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "User Id"
+            }
+          },
+          {
+            "name": "session_id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string",
+              "title": "Session Id"
+            }
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageBatchCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Message"
+                  },
+                  "title": "Response Create Batch Messages For Session V1 Apps  App Id  Users  User Id  Sessions  Session Id  Messages Batch Post"
+                }
+              }
+            }
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/list": {
       "post": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Get Messages",
         "description": "Get all messages for a session",
         "operationId": "get_messages_v1_apps__app_id__users__user_id__sessions__session_id__messages_list_post",
@@ -1468,7 +1591,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/messages/{message_id}": {
       "get": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Get Message",
         "description": "Get a Message by ID",
         "operationId": "get_message_v1_apps__app_id__users__user_id__sessions__session_id__messages__message_id__get",
@@ -1540,7 +1665,9 @@
         }
       },
       "put": {
-        "tags": ["messages"],
+        "tags": [
+          "messages"
+        ],
         "summary": "Update Message",
         "description": "Update the metadata of a Message",
         "operationId": "update_message_v1_apps__app_id__users__user_id__sessions__session_id__messages__message_id__put",
@@ -1624,7 +1751,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages": {
       "post": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Create Metamessage",
         "description": "Adds a message to a session",
         "operationId": "create_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages_post",
@@ -1699,7 +1828,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/list": {
       "post": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessages",
         "description": "Get all messages for a session",
         "operationId": "get_metamessages_v1_apps__app_id__users__user_id__sessions__session_id__metamessages_list_post",
@@ -1818,7 +1949,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}": {
       "get": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessage",
         "description": "Get a specific Metamessage by ID",
         "operationId": "get_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__get",
@@ -1899,7 +2032,9 @@
         }
       },
       "put": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Update Metamessage",
         "description": "Update's the metadata of a metamessage",
         "operationId": "update_metamessage_v1_apps__app_id__users__user_id__sessions__session_id__metamessages__metamessage_id__put",
@@ -1983,7 +2118,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/metamessages/list": {
       "post": {
-        "tags": ["metamessages"],
+        "tags": [
+          "metamessages"
+        ],
         "summary": "Get Metamessages By User",
         "description": "Paginate through the user metamessages for a user",
         "operationId": "get_metamessages_by_user_v1_apps__app_id__users__user_id__metamessages_list_post",
@@ -2093,7 +2230,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/list": {
       "post": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collections",
         "description": "Get All Collections for a User",
         "operationId": "get_collections_v1_apps__app_id__users__user_id__collections_list_post",
@@ -2203,7 +2342,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/name/{name}": {
       "get": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collection By Name",
         "description": "Get a Collection by Name",
         "operationId": "get_collection_by_name_v1_apps__app_id__users__user_id__collections_name__name__get",
@@ -2268,7 +2409,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}": {
       "get": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Get Collection By Id",
         "description": "Get a Collection by ID",
         "operationId": "get_collection_by_id_v1_apps__app_id__users__user_id__collections__collection_id__get",
@@ -2331,7 +2474,9 @@
         }
       },
       "put": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Update Collection",
         "description": "Update a Collection's name or metadata",
         "operationId": "update_collection_v1_apps__app_id__users__user_id__collections__collection_id__put",
@@ -2404,7 +2549,9 @@
         }
       },
       "delete": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Delete Collection",
         "description": "Delete a Collection and its documents",
         "operationId": "delete_collection_v1_apps__app_id__users__user_id__collections__collection_id__delete",
@@ -2467,7 +2614,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections": {
       "post": {
-        "tags": ["collections"],
+        "tags": [
+          "collections"
+        ],
         "summary": "Create Collection",
         "description": "Create a new Collection",
         "operationId": "create_collection_v1_apps__app_id__users__user_id__collections_post",
@@ -2533,7 +2682,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/list": {
       "post": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Get Documents",
         "description": "Get all of the Documents in a Collection",
         "operationId": "get_documents_v1_apps__app_id__users__user_id__collections__collection_id__documents_list_post",
@@ -2652,7 +2803,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/{document_id}": {
       "get": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Get Document",
         "description": "Get a document by ID",
         "operationId": "get_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__get",
@@ -2724,7 +2877,9 @@
         }
       },
       "put": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Update Document",
         "description": "Update the content and/or the metadata of a Document",
         "operationId": "update_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__put",
@@ -2806,7 +2961,9 @@
         }
       },
       "delete": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Delete Document",
         "description": "Delete a Document by ID",
         "operationId": "delete_document_v1_apps__app_id__users__user_id__collections__collection_id__documents__document_id__delete",
@@ -2878,7 +3035,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents/query": {
       "post": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Query Documents",
         "description": "Cosine Similarity Search for Documents",
         "operationId": "query_documents_v1_apps__app_id__users__user_id__collections__collection_id__documents_query_post",
@@ -2957,7 +3116,9 @@
     },
     "/v1/apps/{app_id}/users/{user_id}/collections/{collection_id}/documents": {
       "post": {
-        "tags": ["documents"],
+        "tags": [
+          "documents"
+        ],
         "summary": "Create Document",
         "description": "Embed text as a vector and create a Document",
         "operationId": "create_document_v1_apps__app_id__users__user_id__collections__collection_id__documents_post",
@@ -3041,7 +3202,9 @@
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "AgentChat"
       },
       "AgentQuery": {
@@ -3062,7 +3225,9 @@
           }
         },
         "type": "object",
-        "required": ["queries"],
+        "required": [
+          "queries"
+        ],
         "title": "AgentQuery"
       },
       "App": {
@@ -3087,14 +3252,24 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "metadata", "created_at"],
+        "required": [
+          "id",
+          "name",
+          "metadata",
+          "created_at"
+        ],
         "title": "App",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "AppCreate": {
         "properties": {
           "name": {
             "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
             "title": "Name"
           },
           "metadata": {
@@ -3105,7 +3280,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "AppCreate"
       },
       "AppUpdate": {
@@ -3163,32 +3340,38 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "user_id", "metadata", "created_at"],
+        "required": [
+          "id",
+          "name",
+          "user_id",
+          "metadata",
+          "created_at"
+        ],
         "title": "Collection",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "CollectionCreate": {
         "properties": {
           "name": {
             "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
             "title": "Name"
           },
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "object",
             "title": "Metadata",
-            "default": {}
+            "default": {},
+            "additionalProperties": true
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "CollectionCreate"
       },
       "CollectionGet": {
@@ -3272,30 +3455,30 @@
           "collection_id"
         ],
         "title": "Document",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "DocumentCreate": {
         "properties": {
           "content": {
             "type": "string",
+            "maxLength": 100000,
+            "minLength": 1,
             "title": "Content"
           },
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "object",
             "title": "Metadata",
-            "default": {}
+            "default": {},
+            "additionalProperties": true
           }
         },
         "type": "object",
-        "required": ["content"],
+        "required": [
+          "content"
+        ],
         "title": "DocumentCreate"
       },
       "DocumentGet": {
@@ -3320,6 +3503,8 @@
         "properties": {
           "query": {
             "type": "string",
+            "maxLength": 1000,
+            "minLength": 1,
             "title": "Query"
           },
           "filter": {
@@ -3336,12 +3521,16 @@
           },
           "top_k": {
             "type": "integer",
+            "maximum": 50.0,
+            "minimum": 1.0,
             "title": "Top K",
             "default": 5
           }
         },
         "type": "object",
-        "required": ["query"],
+        "required": [
+          "query"
+        ],
         "title": "DocumentQuery"
       },
       "DocumentUpdate": {
@@ -3350,6 +3539,7 @@
             "anyOf": [
               {
                 "type": "object",
+                "maxProperties": 10000,
                 "additionalProperties": true
               },
               {
@@ -3361,7 +3551,9 @@
           "content": {
             "anyOf": [
               {
-                "type": "string"
+                "type": "string",
+                "maxLength": 100000,
+                "minLength": 1
               },
               {
                 "type": "null"
@@ -3425,12 +3617,35 @@
           "created_at"
         ],
         "title": "Message",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
+      },
+      "MessageBatchCreate": {
+        "properties": {
+          "messages": {
+            "items": {
+              "$ref": "#/components/schemas/MessageCreate"
+            },
+            "type": "array",
+            "maxItems": 100,
+            "title": "Messages"
+          }
+        },
+        "type": "object",
+        "required": [
+          "messages"
+        ],
+        "title": "MessageBatchCreate",
+        "description": "Schema for batch message creation with a max of 100 messages"
       },
       "MessageCreate": {
         "properties": {
           "content": {
             "type": "string",
+            "maxLength": 50000,
+            "minLength": 0,
             "title": "Content"
           },
           "is_user": {
@@ -3445,7 +3660,10 @@
           }
         },
         "type": "object",
-        "required": ["content", "is_user"],
+        "required": [
+          "content",
+          "is_user"
+        ],
         "title": "MessageCreate"
       },
       "MessageGet": {
@@ -3469,19 +3687,15 @@
       "MessageUpdate": {
         "properties": {
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Metadata"
+            "type": "object",
+            "title": "Metadata",
+            "additionalProperties": true
           }
         },
         "type": "object",
+        "required": [
+          "metadata"
+        ],
         "title": "MessageUpdate"
       },
       "Metamessage": {
@@ -3523,16 +3737,23 @@
           "created_at"
         ],
         "title": "Metamessage",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "MetamessageCreate": {
         "properties": {
           "metamessage_type": {
             "type": "string",
+            "maxLength": 50,
+            "minLength": 1,
             "title": "Metamessage Type"
           },
           "content": {
             "type": "string",
+            "maxLength": 50000,
+            "minLength": 0,
             "title": "Content"
           },
           "message_id": {
@@ -3540,21 +3761,18 @@
             "title": "Message Id"
           },
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
+            "type": "object",
             "title": "Metadata",
-            "default": {}
+            "default": {},
+            "additionalProperties": true
           }
         },
         "type": "object",
-        "required": ["metamessage_type", "content", "message_id"],
+        "required": [
+          "metamessage_type",
+          "content",
+          "message_id"
+        ],
         "title": "MetamessageCreate"
       },
       "MetamessageGet": {
@@ -3657,7 +3875,9 @@
           }
         },
         "type": "object",
-        "required": ["message_id"],
+        "required": [
+          "message_id"
+        ],
         "title": "MetamessageUpdate"
       },
       "Page_Collection_": {
@@ -3691,7 +3911,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Collection]"
       },
       "Page_Document_": {
@@ -3725,7 +3950,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Document]"
       },
       "Page_Message_": {
@@ -3759,7 +3989,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Message]"
       },
       "Page_Metamessage_": {
@@ -3793,7 +4028,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Metamessage]"
       },
       "Page_Session_": {
@@ -3827,7 +4067,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[Session]"
       },
       "Page_User_": {
@@ -3861,7 +4106,12 @@
           }
         },
         "type": "object",
-        "required": ["items", "total", "page", "size"],
+        "required": [
+          "items",
+          "total",
+          "page",
+          "size"
+        ],
         "title": "Page[User]"
       },
       "Session": {
@@ -3890,9 +4140,18 @@
           }
         },
         "type": "object",
-        "required": ["id", "is_active", "user_id", "metadata", "created_at"],
+        "required": [
+          "id",
+          "is_active",
+          "user_id",
+          "metadata",
+          "created_at"
+        ],
         "title": "Session",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "SessionCreate": {
         "properties": {
@@ -3932,19 +4191,15 @@
       "SessionUpdate": {
         "properties": {
           "metadata": {
-            "anyOf": [
-              {
-                "type": "object",
-                "additionalProperties": true
-              },
-              {
-                "type": "null"
-              }
-            ],
-            "title": "Metadata"
+            "type": "object",
+            "title": "Metadata",
+            "additionalProperties": true
           }
         },
         "type": "object",
+        "required": [
+          "metadata"
+        ],
         "title": "SessionUpdate"
       },
       "User": {
@@ -3973,14 +4228,25 @@
           }
         },
         "type": "object",
-        "required": ["id", "name", "app_id", "created_at", "metadata"],
+        "required": [
+          "id",
+          "name",
+          "app_id",
+          "created_at",
+          "metadata"
+        ],
         "title": "User",
-        "exclude": ["h_metadata", "public_id"]
+        "exclude": [
+          "h_metadata",
+          "public_id"
+        ]
       },
       "UserCreate": {
         "properties": {
           "name": {
             "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
             "title": "Name"
           },
           "metadata": {
@@ -3991,7 +4257,9 @@
           }
         },
         "type": "object",
-        "required": ["name"],
+        "required": [
+          "name"
+        ],
         "title": "UserCreate"
       },
       "UserGet": {
@@ -4067,7 +4335,11 @@
           }
         },
         "type": "object",
-        "required": ["loc", "msg", "type"],
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
         "title": "ValidationError"
       }
     },
@@ -4079,4 +4351,3 @@
     }
   }
 }
-
