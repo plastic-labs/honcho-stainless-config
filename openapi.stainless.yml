@@ -1,3 +1,4 @@
+
 # yaml-language-server: $schema=https://app.stainlessapi.com/config.schema.json
 
 organization:
@@ -8,7 +9,8 @@ organization:
 resources:
   apps:
     methods:
-      get: get /v1/apps/{app_id}
+      get: get /v1/apps
+      list: post /v1/apps/list
       get_by_name: get /v1/apps/name/{name}
       update: put /v1/apps/{app_id}
       create: post /v1/apps
@@ -17,24 +19,32 @@ resources:
       users:
         methods:
           create: post /v1/apps/{app_id}/users
-          list: post /v1/apps/{app_id}/users/list
-          get: get /v1/apps/{app_id}/users/{user_id}
+          get: get /v1/apps/{app_id}/users
           get_by_name: get /v1/apps/{app_id}/users/name/{name}
           get_or_create: get /v1/apps/{app_id}/users/get_or_create/{name}
           update: put /v1/apps/{app_id}/users/{user_id}
+          list: post /v1/apps/{app_id}/users/list
         subresources:
           metamessages:
             methods:
               list: post /v1/apps/{app_id}/users/{user_id}/metamessages/list
+              create: >-
+                post /v1/apps/{app_id}/users/{user_id}/metamessages
+              get: >-
+                get /v1/apps/{app_id}/users/{user_id}/metamessages/{metamessage_id}
+              update: >-
+                put /v1/apps/{app_id}/users/{user_id}/metamessages/{metamessage_id}
+            models:
+              metamessage: Metamessage
+              page_metamessage: Page_Metamessage_
           sessions:
             methods:
               list: post /v1/apps/{app_id}/users/{user_id}/sessions/list
               create: post /v1/apps/{app_id}/users/{user_id}/sessions
               update: put /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
               delete: delete /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
-              get: get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}
+              get: get /v1/apps/{app_id}/users/{user_id}/sessions
               chat: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat
-              stream: post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/chat/stream
               clone: get /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/clone
             subresources:
               messages:
@@ -52,25 +62,10 @@ resources:
                 models:
                   message: Message
                   page_message: Page_Message_
-              metamessages:
-                methods:
-                  create: >-
-                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages
-                  list: >-
-                    post /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/list
-                  get: >-
-                    get
-                    /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
-                  update: >-
-                    put
-                    /v1/apps/{app_id}/users/{user_id}/sessions/{session_id}/metamessages/{metamessage_id}
-                models:
-                  metamessage: Metamessage
-                  page_metamessage: Page_Metamessage_
             models:
               session: Session
               page_session: Page_Session_
-              agent_chat: AgentChat
+              dialectic_response: DialecticResponse
           collections:
             methods:
               list: post /v1/apps/{app_id}/users/{user_id}/collections/list
@@ -79,7 +74,7 @@ resources:
               update: put /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
               delete: >-
                 delete /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
-              get: get /v1/apps/{app_id}/users/{user_id}/collections/{collection_id}
+              get: get /v1/apps/{app_id}/users/{user_id}/collections
             subresources:
               documents:
                 methods:
@@ -108,6 +103,10 @@ resources:
           page_user: Page_User_
     models:
       app: App
+      page_app: Page_App_
+  keys:
+    methods:
+      create: post /v1/keys
 targets:
   node:
     readme_title: honcho-ai
@@ -115,6 +114,10 @@ targets:
     package_name: honcho-ai
     publish:
       npm: true
+    options:
+      mcp_server:
+        package_name: honcho-ai-mcp
+        enable_all_resources: true
   python:
     readme_title: honcho-ai
     production_repo: plastic-labs/honcho-python
@@ -138,6 +141,7 @@ security:
 environments:
   demo: https://demo.honcho.dev
   local: http://localhost:8000
+  production: https://api.honcho.dev
 query_settings:
   nested_format: brackets
   array_format: comma
